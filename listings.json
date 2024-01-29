@@ -4,9 +4,9 @@
     "items": [
       "/posts/ANN_2.html",
       "/posts/ANN_1.html",
-      "/posts/AlexNet.html",
       "/posts/VGGNet.html",
-      "/posts/LMTM.html"
+      "/posts/LMTM.html",
+      "/posts/AlexNet.html"
     ]
   }
 ]
