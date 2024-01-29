@@ -1,0 +1,14 @@
+---
+title: "DL_tutorial"
+listing:
+  contents: posts
+  sort: "date"
+  type: table
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---
+
+
