@@ -105,10 +105,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -144,31 +144,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#step-1-load-libraries-datasts" id="toc-step-1-load-libraries-datasts" class="nav-link active" data-scroll-target="#step-1-load-libraries-datasts"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></a></li>
+  <li><a href="#step-2-create-dataloader" id="toc-step-2-create-dataloader" class="nav-link" data-scroll-target="#step-2-create-dataloader"><strong><code>Step 2</code> : Create DataLoader</strong></a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><strong>EDA</strong></a></li>
+  <li><a href="#step-3-set-network-structure" id="toc-step-3-set-network-structure" class="nav-link" data-scroll-target="#step-3-set-network-structure"><strong><code>Step 3</code> : Set Network Structure</strong></a></li>
+  <li><a href="#step-4-create-model-instacne" id="toc-step-4-create-model-instacne" class="nav-link" data-scroll-target="#step-4-create-model-instacne"><strong><code>Step 4</code> : Create Model instacne</strong></a></li>
+  <li><a href="#model-test" id="toc-model-test" class="nav-link" data-scroll-target="#model-test"><strong>Model test</strong></a></li>
+  <li><a href="#step-5-model-compile" id="toc-step-5-model-compile" class="nav-link" data-scroll-target="#step-5-model-compile"><strong><code>Step 5</code> : Model compile</strong></a></li>
+  <li><a href="#step-6-set-train-loop" id="toc-step-6-set-train-loop" class="nav-link" data-scroll-target="#step-6-set-train-loop"><strong><code>Step 6</code> : Set train loop</strong></a></li>
+  <li><a href="#step-7-set-test-loop" id="toc-step-7-set-test-loop" class="nav-link" data-scroll-target="#step-7-set-test-loop"><strong><code>Step 7</code> : Set test loop</strong></a></li>
+  <li><a href="#step-8-run-model" id="toc-step-8-run-model" class="nav-link" data-scroll-target="#step-8-run-model"><strong><code>Step 8</code> : Run model</strong></a></li>
+  <li><a href="#step-9-save-load-model" id="toc-step-9-save-load-model" class="nav-link" data-scroll-target="#step-9-save-load-model"><strong><code>Step 9</code> : Save &amp; load model</strong></a>
+  <ul class="collapse">
+  <li><a href="#parameter만-저장하고-불러오기" id="toc-parameter만-저장하고-불러오기" class="nav-link" data-scroll-target="#parameter만-저장하고-불러오기"><strong>parameter만 저장하고 불러오기</strong></a></li>
+  </ul></li>
+  <li><a href="#model-전체를-저장하고-불러오기" id="toc-model-전체를-저장하고-불러오기" class="nav-link" data-scroll-target="#model-전체를-저장하고-불러오기"><strong>Model 전체를 저장하고 불러오기</strong></a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ANN_2.out.ipynb" download="ANN_2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="step-1-load-libraries-datasts" class="level1">

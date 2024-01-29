@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -134,7 +134,7 @@ window.Quarto = {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -170,254 +170,93 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">DL_tutorial</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DL_tutorial</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1706506163017" data-listing-reading-time-sort="1" data-listing-word-count-sort="52">
-<div class="thumbnail">
-<p><a href="./posts/ANN_2.html" class="no-external"></a></p><a href="./posts/ANN_2.html" class="no-external">
-<p class="card-img-top"><img src="posts/ANN_2_files/figure-html/cell-10-output-2.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/ANN_2.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ANN_2.html" class="no-external"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ANN_2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/ANN_2.html" class="no-external">
-
-<div id="d4a1acfd-d1a2-4bd9-bd63-3eecfcf1c5b9" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="im">import</span> torch</span>
-<span id="cb1-5"><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
-<span id="cb1-6"><span class="im">from</span> torch <span class="im">import</span> nn</span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
-<span id="cb1-9"><span class="im">from</span> torchv…<span class="im"></span></span></code></pre></div></div><div id="9c16e914-0be1-46a6-a8be-a15ee06e5a72" class="cell" data-execution_count="2"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co"></span></span><span id="cb2-2"><span class="op"></span></span><span id="cb2-3"><span class="op"></span><span class="st"></span></span><span id="cb2-4"><span class="op"></span><span class="va"></span></span><span id="cb2-5"><span class="op"></span><span class="va"></span></span><span id="cb2-6"><span class="op"></span></span><span id="cb2-7"></span></code></pre></div></div><div id="25cbcee1-cd13-4c53-9b1e-451220e4c051" class="cell" data-execution_count="3"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op"></span></span><span id="cb3-2"><span class="op"></span><span class="st"></span></span><span id="cb3-3"><span class="op"></span><span class="va"></span></span><span id="cb3-4"><span class="op"></span><span class="va"></span></span><span id="cb3-5"><span class="op"></span></span><span id="cb3-6"></span></code></pre></div></div></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/ANN_2.html" class="no-external"></a></p><a href="./posts/ANN_2.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1706506163017" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
-<div class="thumbnail">
-<p><a href="./posts/ANN_1.html" class="no-external"></a></p><a href="./posts/ANN_1.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/ANN_1.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ANN_1.html" class="no-external"><strong><code>Step 1</code> : Import</strong></a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ANN_1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/ANN_1.html" class="no-external">
-
-<div id="5a594df7-74e7-4f36-a5af-e02a3724b681" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb1-6"><span class="im">from</span> sklearn.model_selection <span class="im">import</span> tra…</span><span id="cb1-7"><span class="im"></span></span><span id="cb1-8"><span class="im"></span><span class="im"></span></span><span id="cb1-9"><span class="im"></span><span class="im"></span></span></code></pre></div></div></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/ANN_1.html" class="no-external"></a></p><a href="./posts/ANN_1.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
-<div class="thumbnail">
-<p><a href="./posts/AlexNet.html" class="no-external"></a></p><a href="./posts/AlexNet.html" class="no-external">
-<p class="card-img-top"><img src="posts/AlexNet_files/figure-html/cell-13-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/AlexNet.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/AlexNet.html" class="no-external"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/AlexNet.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/AlexNet.html" class="no-external">불러온 이미지의 증강을 통해 학습 정확도를 향상시키도록 합니다.</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/AlexNet.html" class="no-external"></a></p><a href="./posts/AlexNet.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="85">
-<div class="thumbnail">
-<p><a href="./posts/VGGNet.html" class="no-external"></a></p><a href="./posts/VGGNet.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/VGGNet.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/VGGNet.html" class="no-external"><strong>VGGNet</strong></a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/VGGNet.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/VGGNet.html" class="no-external">불러온 이미지의 증강을 통해 학습 정확도를 향상시키도록 합니다.</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/VGGNet.html" class="no-external"></a></p><a href="./posts/VGGNet.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<div class="thumbnail">
-<p><a href="./posts/LMTM.html" class="no-external"></a></p><a href="./posts/LMTM.html" class="no-external">
-<p class="card-img-top"><img src="posts/LMTM_files/figure-html/cell-28-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/LMTM.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/LMTM.html" class="no-external">Sentimental Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/LMTM.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/LMTM.html" class="no-external">
-
-<ul>
-<li><strong>many to one</strong>
-<ul>
-<li>영화 리뷰 텍스트(many)를 입력으로 받아 긍정 또는 부정(one)을 출력하는 구조</li>
-<li><strong>Embedding</strong>: 영화 리뷰(text)를 벡터로 변환하는 연산</li>
-<li><strong>LSTM</strong>: 시계열 데이터를 처리하기 위한 구조</li>
-<li><strong>Linear</strong>: 결과 출력</li>
-</ul></li>
-</ul>
-</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/LMTM.html" class="no-external"></a></p><a href="./posts/LMTM.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="news,code,analysis" data-listing-date-sort="1706486400000" data-listing-file-modified-sort="1706506163021" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html" class="no-external"></a></p><a href="./posts/post-with-code/index.html" class="no-external">
-<p><img src="./posts/post-with-code/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/post-with-code/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-with-code/index.html" class="no-external">Post With Code</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/post-with-code/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/post-with-code/index.html" class="no-external">This is a post with executable code.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/post-with-code/index.html" class="no-external">
-<div class="listing-date">
-Jan 29, 2024
-</div>
-<div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="news" data-listing-date-sort="1706227200000" data-listing-file-modified-sort="1706506163021" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Welcome To My Blog</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external">This is the first post in a Quarto blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Jan 26, 2024
-</div>
-<div class="listing-author">
-Tristan O’Malley
-</div>
-</a>
-</div>
-</div>
-</div>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+Author
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1706506163017" data-listing-reading-time-sort="1" data-listing-word-count-sort="52" data-listing-title-sort="**`Step 1` : Load libraries &amp; Datasts**" data-listing-filename-sort="ANN_2.ipynb">
+<td>
+<a href="./posts/ANN_2.html" class="title listing-title"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1706506163017" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="**`Step 1` : Import**" data-listing-filename-sort="ANN_1.ipynb">
+<td>
+<a href="./posts/ANN_1.html" class="title listing-title"><strong><code>Step 1</code> : Import</strong></a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="67" data-listing-title-sort="**`Step 1` : Load libraries &amp; Datasets**" data-listing-filename-sort="AlexNet.ipynb">
+<td>
+<a href="./posts/AlexNet.html" class="title listing-title"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="85" data-listing-title-sort="**VGGNet**" data-listing-filename-sort="VGGNet.ipynb">
+<td>
+<a href="./posts/VGGNet.html" class="title listing-title"><strong>VGGNet</strong></a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-file-modified-sort="1706506163021" data-listing-reading-time-sort="1" data-listing-word-count-sort="170" data-listing-title-sort="Sentimental Analysis" data-listing-filename-sort="LMTM.ipynb">
+<td>
+<a href="./posts/LMTM.html" class="title listing-title">Sentimental Analysis</a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

@@ -105,10 +105,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -144,31 +144,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#step-1-load-libraries-datasets" id="toc-step-1-load-libraries-datasets" class="nav-link active" data-scroll-target="#step-1-load-libraries-datasets"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></a></li>
+  <li><a href="#step-2-data-preprocessing" id="toc-step-2-data-preprocessing" class="nav-link" data-scroll-target="#step-2-data-preprocessing"><strong><code>Step 2</code> : Data preprocessing</strong></a></li>
+  <li><a href="#step-3-set-hyperparameters" id="toc-step-3-set-hyperparameters" class="nav-link" data-scroll-target="#step-3-set-hyperparameters"><strong><code>Step 3</code> : Set hyperparameters</strong></a></li>
+  <li><a href="#step-4-create-dataloader" id="toc-step-4-create-dataloader" class="nav-link" data-scroll-target="#step-4-create-dataloader"><strong><code>Step 4</code> : Create DataLoader</strong></a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><strong>EDA</strong></a></li>
+  <li><a href="#step-5-set-network-structure" id="toc-step-5-set-network-structure" class="nav-link" data-scroll-target="#step-5-set-network-structure"><strong><code>Step 5</code> : Set Network Structure</strong></a></li>
+  <li><a href="#step-6-create-model-instance" id="toc-step-6-create-model-instance" class="nav-link" data-scroll-target="#step-6-create-model-instance"><strong><code>Step 6</code> : Create Model instance</strong></a></li>
+  <li><a href="#step-7-model-compile" id="toc-step-7-model-compile" class="nav-link" data-scroll-target="#step-7-model-compile"><strong><code>Step 7</code> : Model compile</strong></a></li>
+  <li><a href="#step-8-set-train-loop" id="toc-step-8-set-train-loop" class="nav-link" data-scroll-target="#step-8-set-train-loop"><strong><code>Step 8</code> : Set train loop</strong></a></li>
+  <li><a href="#step-9-set-test-loop" id="toc-step-9-set-test-loop" class="nav-link" data-scroll-target="#step-9-set-test-loop"><strong><code>Step 9</code> : Set test loop</strong></a></li>
+  <li><a href="#step-10-run-model" id="toc-step-10-run-model" class="nav-link" data-scroll-target="#step-10-run-model"><strong><code>Step 10</code> : Run Model</strong></a></li>
+  <li><a href="#step-11-confusion-matrix" id="toc-step-11-confusion-matrix" class="nav-link" data-scroll-target="#step-11-confusion-matrix"><strong><code>Step 11</code> : Confusion Matrix</strong></a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="AlexNet.out.ipynb" download="AlexNet.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="step-1-load-libraries-datasets" class="level2">
