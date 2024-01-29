@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL_tutorial - Step 1 : Import</title>
+<title>DL_tutorial - ANN_1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,14 +152,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-import" id="toc-step-1-import" class="nav-link active" data-scroll-target="#step-1-import"><strong><code>Step 1</code> : Import</strong></a></li>
-  <li><a href="#step-2-create-dataloader" id="toc-step-2-create-dataloader" class="nav-link" data-scroll-target="#step-2-create-dataloader"><strong><code>Step 2</code> : Create DataLoader</strong></a></li>
-  <li><a href="#step-3-set-network-structure" id="toc-step-3-set-network-structure" class="nav-link" data-scroll-target="#step-3-set-network-structure"><strong><code>Step 3</code> : Set Network Structure</strong></a></li>
-  <li><a href="#step-4-create-model-instance" id="toc-step-4-create-model-instance" class="nav-link" data-scroll-target="#step-4-create-model-instance"><strong><code>Step 4</code> : Create Model instance</strong></a></li>
-  <li><a href="#step-5-model-compile" id="toc-step-5-model-compile" class="nav-link" data-scroll-target="#step-5-model-compile"><strong><code>Step 5</code> : Model compile</strong></a></li>
-  <li><a href="#step-6-set-train-loop" id="toc-step-6-set-train-loop" class="nav-link" data-scroll-target="#step-6-set-train-loop"><strong><code>Step 6</code> : Set train loop</strong></a></li>
-  <li><a href="#step-7-set-test-loop" id="toc-step-7-set-test-loop" class="nav-link" data-scroll-target="#step-7-set-test-loop"><strong><code>Step 7</code> : Set test loop</strong></a></li>
-  <li><a href="#step-8-run-model" id="toc-step-8-run-model" class="nav-link" data-scroll-target="#step-8-run-model"><strong><code>Step 8</code> : Run model</strong></a></li>
+  <li><a href="#ann_1" id="toc-ann_1" class="nav-link active" data-scroll-target="#ann_1">ANN_1</a>
+  <ul class="collapse">
+  <li><a href="#step-1-import" id="toc-step-1-import" class="nav-link" data-scroll-target="#step-1-import"><code>Step 1</code> : Import</a></li>
+  <li><a href="#step-2-create-dataloader" id="toc-step-2-create-dataloader" class="nav-link" data-scroll-target="#step-2-create-dataloader"><code>Step 2</code> : Create DataLoader</a></li>
+  <li><a href="#step-3-set-network-structure" id="toc-step-3-set-network-structure" class="nav-link" data-scroll-target="#step-3-set-network-structure"><code>Step 3</code> : Set Network Structure</a></li>
+  <li><a href="#step-4-create-model-instance" id="toc-step-4-create-model-instance" class="nav-link" data-scroll-target="#step-4-create-model-instance"><code>Step 4</code> : Create Model instance</a></li>
+  <li><a href="#step-5-model-compile" id="toc-step-5-model-compile" class="nav-link" data-scroll-target="#step-5-model-compile"><code>Step 5</code> : Model compile</a></li>
+  <li><a href="#step-6-set-train-loop" id="toc-step-6-set-train-loop" class="nav-link" data-scroll-target="#step-6-set-train-loop"><code>Step 6</code> : Set train loop</a></li>
+  <li><a href="#step-7-set-test-loop" id="toc-step-7-set-test-loop" class="nav-link" data-scroll-target="#step-7-set-test-loop"><code>Step 7</code> : Set test loop</a></li>
+  <li><a href="#step-8-run-model" id="toc-step-8-run-model" class="nav-link" data-scroll-target="#step-8-run-model"><code>Step 8</code> : Run model</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ANN_1.out.ipynb" download="ANN_1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -168,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong><code>Step 1</code> : Import</strong></h1>
+<h1 class="title">ANN_1</h1>
 </div>
 
 
@@ -185,8 +188,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="step-1-import" class="level1">
-<h1><strong><code>Step 1</code> : Import</strong></h1>
+<section id="ann_1" class="level1">
+<h1>ANN_1</h1>
+<section id="step-1-import" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-import"><code>Step 1</code> : Import</h2>
 <div id="5a594df7-74e7-4f36-a5af-e02a3724b681" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -199,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span>  TensorDataset, DataLoader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-2-create-dataloader" class="level1">
-<h1><strong><code>Step 2</code> : Create DataLoader</strong></h1>
+<section id="step-2-create-dataloader" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-create-dataloader"><code>Step 2</code> : Create DataLoader</h2>
 <div id="8c3ae6eb-ce7a-40bf-8d66-8b1f10b8cee3" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 불러오기</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris()</span>
@@ -227,8 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-3-set-network-structure" class="level1">
-<h1><strong><code>Step 3</code> : Set Network Structure</strong></h1>
+<section id="step-3-set-network-structure" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-set-network-structure"><code>Step 3</code> : Set Network Structure</h2>
 <div id="0a603c04-2e3e-4858-9002-bdb8cb5f73b4" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NeuralNetwork(nn.Module):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
@@ -245,8 +250,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-4-create-model-instance" class="level1">
-<h1><strong><code>Step 4</code> : Create Model instance</strong></h1>
+<section id="step-4-create-model-instance" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-model-instance"><code>Step 4</code> : Create Model instance</h2>
 <div id="7a0734be-8775-47d4-9377-d17c551fa5ba" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'device = </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span>
@@ -256,8 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="step-5-model-compile" class="level1">
-<h1><strong><code>Step 5</code> : Model compile</strong></h1>
+<section id="step-5-model-compile" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-model-compile"><code>Step 5</code> : Model compile</h2>
 <div id="f6585042-731c-4603-8ad5-c4d81ce34df8" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모델 컴파일</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.001</span></span>
@@ -265,8 +270,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr <span class="op">=</span> learning_rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-6-set-train-loop" class="level1">
-<h1><strong><code>Step 6</code> : Set train loop</strong></h1>
+<section id="step-6-set-train-loop" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-set-train-loop"><code>Step 6</code> : Set train loop</h2>
 <div id="4f0e5539-34ba-431c-8197-03a80b51a406" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_loop(train_loader, model, loss_fn, optimizer):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(train_loader.dataset)</span>
@@ -287,8 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'loss: </span><span class="sc">{</span>loss<span class="sc">:&gt;7f}</span><span class="ss">  [</span><span class="sc">{</span>current<span class="sc">:&gt;5d}</span><span class="ss">]/</span><span class="sc">{</span>size<span class="sc">:5d}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-7-set-test-loop" class="level1">
-<h1><strong><code>Step 7</code> : Set test loop</strong></h1>
+<section id="step-7-set-test-loop" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-set-test-loop"><code>Step 7</code> : Set test loop</h2>
 <div id="19b9d89a-98bc-4ca2-b211-00ba26af7db0" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_loop(test_loader, model, loss_fn):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(test_loader.dataset)</span>
@@ -307,8 +312,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Test Error : </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:8f}</span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-8-run-model" class="level1">
-<h1><strong><code>Step 8</code> : Run model</strong></h1>
+<section id="step-8-run-model" class="level2">
+<h2 class="anchored" data-anchor-id="step-8-run-model"><code>Step 8</code> : Run model</h2>
 <div id="01078ddd-e089-4251-b309-8fc58210b5cb" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모델 실행</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
@@ -495,6 +500,7 @@ Done!</code></pre>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

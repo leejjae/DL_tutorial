@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL_tutorial - Step 1 : Load libraries &amp; Datasts</title>
+<title>DL_tutorial - ANN_2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,21 +152,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-load-libraries-datasts" id="toc-step-1-load-libraries-datasts" class="nav-link active" data-scroll-target="#step-1-load-libraries-datasts"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></a></li>
-  <li><a href="#step-2-create-dataloader" id="toc-step-2-create-dataloader" class="nav-link" data-scroll-target="#step-2-create-dataloader"><strong><code>Step 2</code> : Create DataLoader</strong></a></li>
-  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><strong>EDA</strong></a></li>
-  <li><a href="#step-3-set-network-structure" id="toc-step-3-set-network-structure" class="nav-link" data-scroll-target="#step-3-set-network-structure"><strong><code>Step 3</code> : Set Network Structure</strong></a></li>
-  <li><a href="#step-4-create-model-instacne" id="toc-step-4-create-model-instacne" class="nav-link" data-scroll-target="#step-4-create-model-instacne"><strong><code>Step 4</code> : Create Model instacne</strong></a></li>
-  <li><a href="#model-test" id="toc-model-test" class="nav-link" data-scroll-target="#model-test"><strong>Model test</strong></a></li>
-  <li><a href="#step-5-model-compile" id="toc-step-5-model-compile" class="nav-link" data-scroll-target="#step-5-model-compile"><strong><code>Step 5</code> : Model compile</strong></a></li>
-  <li><a href="#step-6-set-train-loop" id="toc-step-6-set-train-loop" class="nav-link" data-scroll-target="#step-6-set-train-loop"><strong><code>Step 6</code> : Set train loop</strong></a></li>
-  <li><a href="#step-7-set-test-loop" id="toc-step-7-set-test-loop" class="nav-link" data-scroll-target="#step-7-set-test-loop"><strong><code>Step 7</code> : Set test loop</strong></a></li>
-  <li><a href="#step-8-run-model" id="toc-step-8-run-model" class="nav-link" data-scroll-target="#step-8-run-model"><strong><code>Step 8</code> : Run model</strong></a></li>
-  <li><a href="#step-9-save-load-model" id="toc-step-9-save-load-model" class="nav-link" data-scroll-target="#step-9-save-load-model"><strong><code>Step 9</code> : Save &amp; load model</strong></a>
+  <li><a href="#ann_2" id="toc-ann_2" class="nav-link active" data-scroll-target="#ann_2">ANN_2</a></li>
+  <li><a href="#step-1-load-libraries-datasts" id="toc-step-1-load-libraries-datasts" class="nav-link" data-scroll-target="#step-1-load-libraries-datasts"><code>Step 1</code> : Load libraries &amp; Datasts</a></li>
+  <li><a href="#step-2-create-dataloader" id="toc-step-2-create-dataloader" class="nav-link" data-scroll-target="#step-2-create-dataloader"><code>Step 2</code> : Create DataLoader</a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">EDA</a></li>
+  <li><a href="#step-3-set-network-structure" id="toc-step-3-set-network-structure" class="nav-link" data-scroll-target="#step-3-set-network-structure"><code>Step 3</code> : Set Network Structure</a></li>
+  <li><a href="#step-4-create-model-instacne" id="toc-step-4-create-model-instacne" class="nav-link" data-scroll-target="#step-4-create-model-instacne"><code>Step 4</code> : Create Model instacne</a></li>
+  <li><a href="#model-test" id="toc-model-test" class="nav-link" data-scroll-target="#model-test">Model test</a></li>
+  <li><a href="#step-5-model-compile" id="toc-step-5-model-compile" class="nav-link" data-scroll-target="#step-5-model-compile"><code>Step 5</code> : Model compile</a></li>
+  <li><a href="#step-6-set-train-loop" id="toc-step-6-set-train-loop" class="nav-link" data-scroll-target="#step-6-set-train-loop"><code>Step 6</code> : Set train loop</a></li>
+  <li><a href="#step-7-set-test-loop" id="toc-step-7-set-test-loop" class="nav-link" data-scroll-target="#step-7-set-test-loop"><code>Step 7</code> : Set test loop</a></li>
+  <li><a href="#step-8-run-model" id="toc-step-8-run-model" class="nav-link" data-scroll-target="#step-8-run-model"><code>Step 8</code> : Run model</a></li>
+  <li><a href="#step-9-save-load-model" id="toc-step-9-save-load-model" class="nav-link" data-scroll-target="#step-9-save-load-model"><code>Step 9</code> : Save &amp; load model</a>
   <ul class="collapse">
   <li><a href="#parameter만-저장하고-불러오기" id="toc-parameter만-저장하고-불러오기" class="nav-link" data-scroll-target="#parameter만-저장하고-불러오기"><strong>parameter만 저장하고 불러오기</strong></a></li>
   </ul></li>
-  <li><a href="#model-전체를-저장하고-불러오기" id="toc-model-전체를-저장하고-불러오기" class="nav-link" data-scroll-target="#model-전체를-저장하고-불러오기"><strong>Model 전체를 저장하고 불러오기</strong></a></li>
+  <li><a href="#model-전체를-저장하고-불러오기" id="toc-model-전체를-저장하고-불러오기" class="nav-link" data-scroll-target="#model-전체를-저장하고-불러오기">Model 전체를 저장하고 불러오기</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ANN_2.out.ipynb" download="ANN_2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -175,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></h1>
+<h1 class="title">ANN_2</h1>
 </div>
 
 
@@ -192,8 +193,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="ann_2" class="level1">
+<h1>ANN_2</h1>
+</section>
 <section id="step-1-load-libraries-datasts" class="level1">
-<h1><strong><code>Step 1</code> : Load libraries &amp; Datasts</strong></h1>
+<h1><code>Step 1</code> : Load libraries &amp; Datasts</h1>
 <div id="d4a1acfd-d1a2-4bd9-bd63-3eecfcf1c5b9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -224,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="step-2-create-dataloader" class="level1">
-<h1><strong><code>Step 2</code> : Create DataLoader</strong></h1>
+<h1><code>Step 2</code> : Create DataLoader</h1>
 <div id="b9ab2b63-1ac5-4ffc-9e78-4dc0685a9fc5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -239,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="eda" class="level1">
-<h1><strong>EDA</strong></h1>
+<h1>EDA</h1>
 <div id="d01d3043-4222-496f-81c8-dbe84e95ccdd" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(training_data, <span class="st">'</span><span class="ch">\n</span><span class="st">--------------------------</span><span class="ch">\n</span><span class="st">'</span>, test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -337,7 +341,7 @@ Shirt</code></pre>
 </div>
 </section>
 <section id="step-3-set-network-structure" class="level1">
-<h1><strong><code>Step 3</code> : Set Network Structure</strong></h1>
+<h1><code>Step 3</code> : Set Network Structure</h1>
 <div id="6b603681-eb86-4268-a41c-e64da1681652" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NeuralNetwork(nn.Module):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
@@ -356,7 +360,7 @@ Shirt</code></pre>
 </div>
 </section>
 <section id="step-4-create-model-instacne" class="level1">
-<h1><strong><code>Step 4</code> : Create Model instacne</strong></h1>
+<h1><code>Step 4</code> : Create Model instacne</h1>
 <div id="64b54691-cb76-46dd-880a-e63e0856a077" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NeuralNetwork().to(device)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -374,7 +378,7 @@ Shirt</code></pre>
 </div>
 </section>
 <section id="model-test" class="level1">
-<h1><strong>Model test</strong></h1>
+<h1>Model test</h1>
 <div id="9d4488d1-2681-4cf1-ab2a-bd81be32f44f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.rand(<span class="dv">1</span>, <span class="dv">28</span>, <span class="dv">28</span>, device<span class="op">=</span>device)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> model(X)</span>
@@ -395,7 +399,7 @@ tensor(2, device='cuda:0')</code></pre>
 </div>
 </section>
 <section id="step-5-model-compile" class="level1">
-<h1><strong><code>Step 5</code> : Model compile</strong></h1>
+<h1><code>Step 5</code> : Model compile</h1>
 <div id="7e582a89-e5d6-4f12-aa1c-77e9ecb026bf" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loss</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> nn.CrossEntropyLoss()</span>
@@ -405,64 +409,58 @@ tensor(2, device='cuda:0')</code></pre>
 </div>
 </section>
 <section id="step-6-set-train-loop" class="level1">
-<h1><strong><code>Step 6</code> : Set train loop</strong></h1>
-<div id="797c1477-7153-4841-b840-4272370102a8" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">%</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div id="e0d1a7ee-906d-4576-aaa5-25ef47fae48e" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_loop(train_loader, model, loss_fn, optimizer):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(train_loader.dataset)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batch, (X,y) <span class="kw">in</span> <span class="bu">enumerate</span>(train_loader):</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        X, y <span class="op">=</span> X.to(device), y.to(device)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> model(X)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># loss calculation</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(pred, y)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># backpropagation</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> batch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>            loss, current <span class="op">=</span> loss.item(), batch <span class="op">*</span> <span class="bu">len</span>(X)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'loss: </span><span class="sc">{</span>loss<span class="sc">:7&gt;f}</span><span class="ss"> [</span><span class="sc">{</span>current<span class="sc">:&gt;5d}</span><span class="ss">]/</span><span class="sc">{</span>size<span class="sc">:5d}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h1><code>Step 6</code> : Set train loop</h1>
+<div id="e0d1a7ee-906d-4576-aaa5-25ef47fae48e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_loop(train_loader, model, loss_fn, optimizer):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(train_loader.dataset)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batch, (X,y) <span class="kw">in</span> <span class="bu">enumerate</span>(train_loader):</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        X, y <span class="op">=</span> X.to(device), y.to(device)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> model(X)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># loss calculation</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(pred, y)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># backpropagation</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> batch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>            loss, current <span class="op">=</span> loss.item(), batch <span class="op">*</span> <span class="bu">len</span>(X)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'loss: </span><span class="sc">{</span>loss<span class="sc">:7&gt;f}</span><span class="ss"> [</span><span class="sc">{</span>current<span class="sc">:&gt;5d}</span><span class="ss">]/</span><span class="sc">{</span>size<span class="sc">:5d}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-7-set-test-loop" class="level1">
-<h1><strong><code>Step 7</code> : Set test loop</strong></h1>
+<h1><code>Step 7</code> : Set test loop</h1>
 <div id="44defa55-3a14-48e7-8b6f-2adfe7d54146" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_loop(test_loader, model, loss_fn):</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(test_loader.dataset)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    num_batches <span class="op">=</span> <span class="bu">len</span>(test_loader)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    test_loss, correct <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X, y <span class="kw">in</span> test_loader:</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>            X, y <span class="op">=</span> X.to(device), y.to(device)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>            pred <span class="op">=</span> model(X)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            test_loss <span class="op">+=</span> loss_fn(pred, y).item()</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>            correct <span class="op">+=</span> (pred.argmax(<span class="dv">1</span>)<span class="op">==</span>y).<span class="bu">type</span>(torch.<span class="bu">float</span>).<span class="bu">sum</span>().item()</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    test_loss <span class="op">/=</span> num_batches</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    correct <span class="op">/=</span> size</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Test Error: </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:8f}</span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_loop(test_loader, model, loss_fn):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(test_loader.dataset)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    num_batches <span class="op">=</span> <span class="bu">len</span>(test_loader)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    test_loss, correct <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X, y <span class="kw">in</span> test_loader:</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            X, y <span class="op">=</span> X.to(device), y.to(device)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>            pred <span class="op">=</span> model(X)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>            test_loss <span class="op">+=</span> loss_fn(pred, y).item()</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>            correct <span class="op">+=</span> (pred.argmax(<span class="dv">1</span>)<span class="op">==</span>y).<span class="bu">type</span>(torch.<span class="bu">float</span>).<span class="bu">sum</span>().item()</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    test_loss <span class="op">/=</span> num_batches</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    correct <span class="op">/=</span> size</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Test Error: </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:8f}</span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-8-run-model" class="level1">
-<h1><strong><code>Step 8</code> : Run model</strong></h1>
+<h1><code>Step 8</code> : Run model</h1>
 <div id="4069a417-924a-4795-bb1b-457304c32814" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">--------------------------'</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    train_loop(train_dataloader, model, loss, optimizer)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    test_loop(test_dataloader, model, loss)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Done"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Epoch </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">--------------------------'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    train_loop(train_dataloader, model, loss, optimizer)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    test_loop(test_dataloader, model, loss)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Done"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1 
 --------------------------
@@ -619,15 +617,15 @@ Done</code></pre>
 </div>
 </section>
 <section id="step-9-save-load-model" class="level1">
-<h1><strong><code>Step 9</code> : Save &amp; load model</strong></h1>
+<h1><code>Step 9</code> : Save &amp; load model</h1>
 <section id="parameter만-저장하고-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="parameter만-저장하고-불러오기"><strong>parameter만 저장하고 불러오기</strong></h3>
 <div id="d23ea500-20ba-439a-8a92-40c2289588cd" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>torch.save(model.state_dict(), <span class="st">'model_weights.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>torch.save(model.state_dict(), <span class="st">'model_weights.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="ee2a6bd8-1179-4165-bf7b-78a99a8e68f7" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> NeuralNetwork().to(device)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> NeuralNetwork().to(device)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NeuralNetwork(
   (flatten): Flatten(start_dim=1, end_dim=-1)
@@ -641,14 +639,14 @@ Done</code></pre>
 </div>
 </div>
 <div id="57e4789a-41d9-4c33-a5a0-f034571c941b" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>model2.load_state_dict(torch.load(<span class="st">'model_weights.pth'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model2.load_state_dict(torch.load(<span class="st">'model_weights.pth'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>&lt;All keys matched successfully&gt;</code></pre>
 </div>
 </div>
 <div id="c217b7e0-d643-4fd6-ac20-2d4df9fcc80a" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>model2.<span class="bu">eval</span>()</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>test_loop(test_dataloader, model2, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>model2.<span class="bu">eval</span>()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>test_loop(test_dataloader, model2, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test Error: 
  Accuracy: 88.1%, Avg loss: 0.334797
@@ -658,16 +656,16 @@ Done</code></pre>
 </section>
 </section>
 <section id="model-전체를-저장하고-불러오기" class="level1">
-<h1><strong>Model 전체를 저장하고 불러오기</strong></h1>
+<h1>Model 전체를 저장하고 불러오기</h1>
 <div id="9233434c-2121-42de-a5b7-7cf861db5585" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>torch.save(model, <span class="st">'model.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>torch.save(model, <span class="st">'model.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="bb77ebb5-0dd3-4e2c-af34-5e47d644955c" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="op">=</span> torch.load(<span class="st">'model.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="op">=</span> torch.load(<span class="st">'model.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cf49d87d-8d4f-49e2-b7e6-d7392bef7cba" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>model3.<span class="bu">eval</span>()</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>test_loop(test_dataloader, model3, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>model3.<span class="bu">eval</span>()</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>test_loop(test_dataloader, model3, loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test Error: 
  Accuracy: 88.1%, Avg loss: 0.334797

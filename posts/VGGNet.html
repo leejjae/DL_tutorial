@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DL_tutorial - VGGNet</title>
+<title>DL_tutorial - VGGNET</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,18 +152,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vggnet" id="toc-vggnet" class="nav-link active" data-scroll-target="#vggnet">## <strong>VGGNet</strong></a></li>
-  <li><a href="#step-1-load-libraries-datasets" id="toc-step-1-load-libraries-datasets" class="nav-link" data-scroll-target="#step-1-load-libraries-datasets"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></a></li>
-  <li><a href="#step-2-data-preprocessing" id="toc-step-2-data-preprocessing" class="nav-link" data-scroll-target="#step-2-data-preprocessing"><strong><code>Step 2</code> : Data preprocessing</strong></a></li>
-  <li><a href="#step-3-set-hyperparameters" id="toc-step-3-set-hyperparameters" class="nav-link" data-scroll-target="#step-3-set-hyperparameters"><strong><code>Step 3</code> : Set hyperparameters</strong></a></li>
-  <li><a href="#step-4-create-dataloader" id="toc-step-4-create-dataloader" class="nav-link" data-scroll-target="#step-4-create-dataloader"><strong><code>Step 4</code> : Create DataLoader</strong></a></li>
-  <li><a href="#step-5-set-network-structure" id="toc-step-5-set-network-structure" class="nav-link" data-scroll-target="#step-5-set-network-structure"><strong><code>Step 5</code> : Set Network Structure</strong></a></li>
-  <li><a href="#step-6-create-model-instance" id="toc-step-6-create-model-instance" class="nav-link" data-scroll-target="#step-6-create-model-instance"><strong><code>Step 6</code> : Create Model instance</strong></a></li>
-  <li><a href="#step-7-model-compile" id="toc-step-7-model-compile" class="nav-link" data-scroll-target="#step-7-model-compile"><strong><code>Step 7</code> : Model compile</strong></a></li>
-  <li><a href="#step-8-set-train-loop" id="toc-step-8-set-train-loop" class="nav-link" data-scroll-target="#step-8-set-train-loop"><strong><code>Step 8</code> : Set train loop</strong></a></li>
-  <li><a href="#step-9-set-test-loop" id="toc-step-9-set-test-loop" class="nav-link" data-scroll-target="#step-9-set-test-loop"><strong><code>Step 9</code> : Set test loop</strong></a></li>
-  <li><a href="#step-10-run-model" id="toc-step-10-run-model" class="nav-link" data-scroll-target="#step-10-run-model"><strong><code>Step 10</code> : Run model</strong></a></li>
-  <li><a href="#cifar-classifierpretrained-vggnet" id="toc-cifar-classifierpretrained-vggnet" class="nav-link" data-scroll-target="#cifar-classifierpretrained-vggnet">## <strong>CIFAR Classifier(Pretrained VGGNet)</strong></a></li>
+  <li><a href="#vggnet" id="toc-vggnet" class="nav-link active" data-scroll-target="#vggnet">VGGNET</a>
+  <ul class="collapse">
+  <li><a href="#vggnet-1" id="toc-vggnet-1" class="nav-link" data-scroll-target="#vggnet-1">## <strong>VGGNet</strong></a></li>
+  <li><a href="#step-1-load-libraries-datasets" id="toc-step-1-load-libraries-datasets" class="nav-link" data-scroll-target="#step-1-load-libraries-datasets"><code>Step 1</code> : Load libraries &amp; Datasets</a></li>
+  <li><a href="#step-2-data-preprocessing" id="toc-step-2-data-preprocessing" class="nav-link" data-scroll-target="#step-2-data-preprocessing"><code>Step 2</code> : Data preprocessing</a></li>
+  <li><a href="#step-3-set-hyperparameters" id="toc-step-3-set-hyperparameters" class="nav-link" data-scroll-target="#step-3-set-hyperparameters"><code>Step 3</code> : Set hyperparameters</a></li>
+  <li><a href="#step-4-create-dataloader" id="toc-step-4-create-dataloader" class="nav-link" data-scroll-target="#step-4-create-dataloader"><code>Step 4</code> : Create DataLoader</a></li>
+  <li><a href="#step-5-set-network-structure" id="toc-step-5-set-network-structure" class="nav-link" data-scroll-target="#step-5-set-network-structure"><code>Step 5</code> : Set Network Structure</a></li>
+  <li><a href="#step-6-create-model-instance" id="toc-step-6-create-model-instance" class="nav-link" data-scroll-target="#step-6-create-model-instance"><code>Step 6</code> : Create Model instance</a></li>
+  <li><a href="#step-7-model-compile" id="toc-step-7-model-compile" class="nav-link" data-scroll-target="#step-7-model-compile"><code>Step 7</code> : Model compile</a></li>
+  <li><a href="#step-8-set-train-loop" id="toc-step-8-set-train-loop" class="nav-link" data-scroll-target="#step-8-set-train-loop"><code>Step 8</code> : Set train loop</a></li>
+  <li><a href="#step-9-set-test-loop" id="toc-step-9-set-test-loop" class="nav-link" data-scroll-target="#step-9-set-test-loop"><code>Step 9</code> : Set test loop</a></li>
+  <li><a href="#step-10-run-model" id="toc-step-10-run-model" class="nav-link" data-scroll-target="#step-10-run-model"><code>Step 10</code> : Run model</a></li>
+  <li><a href="#cifar-classifierpretrained-vggnet" id="toc-cifar-classifierpretrained-vggnet" class="nav-link" data-scroll-target="#cifar-classifierpretrained-vggnet">## CIFAR Classifier(Pretrained VGGNet)</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="VGGNet.out.ipynb" download="VGGNet.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -172,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>VGGNet</strong></h1>
+<h1 class="title">VGGNET</h1>
 </div>
 
 
@@ -189,8 +192,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vggnet" class="level2">
-<h2 class="anchored" data-anchor-id="vggnet">## <strong>VGGNet</strong></h2>
+<section id="vggnet" class="level1">
+<h1>VGGNET</h1>
+<section id="vggnet-1" class="level2">
+<h2 class="anchored" data-anchor-id="vggnet-1">## <strong>VGGNet</strong></h2>
 <ul>
 <li>VGGNet 구조 살펴보기</li>
 </ul>
@@ -202,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="step-1-load-libraries-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-load-libraries-datasets"><strong><code>Step 1</code> : Load libraries &amp; Datasets</strong></h2>
+<h2 class="anchored" data-anchor-id="step-1-load-libraries-datasets"><code>Step 1</code> : Load libraries &amp; Datasets</h2>
 <div id="d0cf32bb-acbe-491b-a997-c168747576c2" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -220,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="step-2-data-preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-data-preprocessing"><strong><code>Step 2</code> : Data preprocessing</strong></h2>
+<h2 class="anchored" data-anchor-id="step-2-data-preprocessing"><code>Step 2</code> : Data preprocessing</h2>
 <p>불러온 이미지의 증강을 통해 학습 정확도를 향상시키도록 합니다.</p>
 <p><code>-</code> RandomCrop<br>
 <code>-</code> RandomHorizontalFlip<br>
@@ -258,7 +263,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-3-set-hyperparameters" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-set-hyperparameters"><strong><code>Step 3</code> : Set hyperparameters</strong></h2>
+<h2 class="anchored" data-anchor-id="step-3-set-hyperparameters"><code>Step 3</code> : Set hyperparameters</h2>
 <div id="a64ff7a3-2c21-43c1-98a9-5e25bc42d4ba" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>batch_sizes <span class="op">=</span> <span class="dv">32</span></span>
@@ -271,14 +276,14 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-4-create-dataloader" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-create-dataloader"><strong><code>Step 4</code> : Create DataLoader</strong></h2>
+<h2 class="anchored" data-anchor-id="step-4-create-dataloader"><code>Step 4</code> : Create DataLoader</h2>
 <div id="c69bb495-0f17-4fdb-87dd-18ec9f6573fd" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(train_img, batch_size <span class="op">=</span> batch_sizes, shuffle <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>test_loader <span class="op">=</span> DataLoader(test_img, batch_size <span class="op">=</span> batch_sizes, shuffle <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-5-set-network-structure" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-set-network-structure"><strong><code>Step 5</code> : Set Network Structure</strong></h2>
+<h2 class="anchored" data-anchor-id="step-5-set-network-structure"><code>Step 5</code> : Set Network Structure</h2>
 <div id="3d415be2-83d0-4843-94b4-7a106feb51ed" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> {</span>
@@ -324,7 +329,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-6-create-model-instance" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-create-model-instance"><strong><code>Step 6</code> : Create Model instance</strong></h2>
+<h2 class="anchored" data-anchor-id="step-6-create-model-instance"><code>Step 6</code> : Create Model instance</h2>
 <div id="e7f2b6be-e8a2-402f-a49e-d14b3363c029" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> VGG(<span class="st">'VGG16'</span>).to(device)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -390,7 +395,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-7-model-compile" class="level2">
-<h2 class="anchored" data-anchor-id="step-7-model-compile"><strong><code>Step 7</code> : Model compile</strong></h2>
+<h2 class="anchored" data-anchor-id="step-7-model-compile"><code>Step 7</code> : Model compile</h2>
 <div id="e49cfe4c-44e5-4e73-a246-dd676baf0eed" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loss</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> nn.CrossEntropyLoss()</span>
@@ -399,7 +404,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-8-set-train-loop" class="level2">
-<h2 class="anchored" data-anchor-id="step-8-set-train-loop"><strong><code>Step 8</code> : Set train loop</strong></h2>
+<h2 class="anchored" data-anchor-id="step-8-set-train-loop"><code>Step 8</code> : Set train loop</h2>
 <div id="a76cacfe-e7d2-4afd-9892-111a3d73bbf4" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(train_loader, model, loss_fn, optimizer):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
@@ -424,7 +429,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-9-set-test-loop" class="level2">
-<h2 class="anchored" data-anchor-id="step-9-set-test-loop"><strong><code>Step 9</code> : Set test loop</strong></h2>
+<h2 class="anchored" data-anchor-id="step-9-set-test-loop"><code>Step 9</code> : Set test loop</h2>
 <div id="f8c183b6-efdc-4ae7-b959-4440ea670507" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(test_loader, model, loss_fn):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
@@ -446,7 +451,7 @@ Files already downloaded and verified</code></pre>
 </div>
 </section>
 <section id="step-10-run-model" class="level2">
-<h2 class="anchored" data-anchor-id="step-10-run-model"><strong><code>Step 10</code> : Run model</strong></h2>
+<h2 class="anchored" data-anchor-id="step-10-run-model"><code>Step 10</code> : Run model</h2>
 <div id="a8689ee8-d1cb-4053-94c3-8591ea122ad4" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">---------------------------"</span>)</span>
@@ -670,13 +675,14 @@ Done!</code></pre>
 </div>
 </section>
 <section id="cifar-classifierpretrained-vggnet" class="level2">
-<h2 class="anchored" data-anchor-id="cifar-classifierpretrained-vggnet">## <strong>CIFAR Classifier(Pretrained VGGNet)</strong></h2>
+<h2 class="anchored" data-anchor-id="cifar-classifierpretrained-vggnet">## CIFAR Classifier(Pretrained VGGNet)</h2>
 <p>ImageNet 데이터로 학습한 VGGNet을 사용하여 주어진 데이터 셋에서 사용할 수 있도록 Fine tuning 해봅니다.</p>
 <div id="66d555b3-aa2b-47ea-b68c-9f39a751549e" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>집에가 자 집에</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
