@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.534">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이정재">
+<meta name="dcterms.date" content="2024-02-09">
+
+<title>DL_tutorial - CV_ObjectDetection_0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">DL_tutorial</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#커스텀-데이터-준비" id="toc-커스텀-데이터-준비" class="nav-link active" data-scroll-target="#커스텀-데이터-준비">커스텀 데이터 준비</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="CV_ObjectDetection_0.out.ipynb" download="CV_ObjectDetection_0.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CV_ObjectDetection_0</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>이정재 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 9, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="6d7f1ac0-cf4a-4b26-8c38-bd32945c782a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pascal VOC 2007 데이터 다운로드</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget http:<span class="op">//</span>pjreddie.com<span class="op">/</span>media<span class="op">/</span>files<span class="op">/</span>VOCtrainval_06<span class="op">-</span>Nov<span class="op">-</span><span class="fl">2007.</span><span class="er">tar</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget http:<span class="op">//</span>pjreddie.com<span class="op">/</span>media<span class="op">/</span>files<span class="op">/</span>VOCtest_06<span class="op">-</span>Nov<span class="op">-</span><span class="fl">2007.</span><span class="er">tar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--2024-02-09 07:27:15--  http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
+Resolving pjreddie.com (pjreddie.com)... 162.0.215.52
+Connecting to pjreddie.com (pjreddie.com)|162.0.215.52|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar [following]
+--2024-02-09 07:27:16--  https://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
+Connecting to pjreddie.com (pjreddie.com)|162.0.215.52|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 460032000 (439M) [application/x-tar]
+Saving to: ‘VOCtrainval_06-Nov-2007.tar.3’
+
+VOCtrainval_06-Nov- 100%[===================&gt;] 438.72M  15.0MB/s    in 30s     
+
+2024-02-09 07:27:47 (14.5 MB/s) - ‘VOCtrainval_06-Nov-2007.tar.3’ saved [460032000/460032000]
+
+--2024-02-09 07:27:47--  http://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar
+Resolving pjreddie.com (pjreddie.com)... 162.0.215.52
+Connecting to pjreddie.com (pjreddie.com)|162.0.215.52|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar [following]
+--2024-02-09 07:27:47--  https://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar
+Connecting to pjreddie.com (pjreddie.com)|162.0.215.52|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 451020800 (430M) [application/x-tar]
+Saving to: ‘VOCtest_06-Nov-2007.tar.3’
+
+VOCtest_06-Nov-2007 100%[===================&gt;] 430.13M  16.1MB/s    in 26s     
+
+2024-02-09 07:29:06 (16.3 MB/s) - ‘VOCtest_06-Nov-2007.tar.3’ saved [451020800/451020800]
+</code></pre>
+</div>
+</div>
+<div id="d7c54113-e0e9-473b-9dce-e7a8040b45ad" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets/trainval'</span>).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets/test'</span>).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>root<span class="op">=</span>Path(<span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path1 <span class="kw">in</span> (<span class="st">'images'</span>, <span class="st">'labels'</span>):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> path2 <span class="kw">in</span> (<span class="st">'train2007'</span>, <span class="st">'val2007'</span>, <span class="st">'test2007'</span>):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        new_path <span class="op">=</span> root <span class="op">/</span> <span class="st">'VOC'</span> <span class="op">/</span> path1 <span class="op">/</span> path2</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        new_path.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cafe80ed-b4e0-4ab1-b7d1-b2f7026e630f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터셋 압축 해제</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>tar <span class="op">-</span>xvf VOCtrainval_06<span class="op">-</span>Nov<span class="op">-</span><span class="fl">2007.</span><span class="er">tar</span> <span class="op">-</span>C <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>trainval<span class="op">/</span> <span class="op">&gt;</span> <span class="op">/</span>dev<span class="op">/</span>null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>tar <span class="op">-</span>xvf VOCtest_06<span class="op">-</span>Nov<span class="op">-</span><span class="fl">2007.</span><span class="er">tar</span> <span class="op">-</span>C <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>test<span class="op">/</span> <span class="op">&gt;</span> <span class="op">/</span>dev<span class="op">/</span>null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5fca2870-ed92-476f-acfa-4d4a0c8b0a89" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># XML 형식을 YOLO Format으로 변경해주는 깃허브 클론 </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>ssaru<span class="op">/</span>convert2Yolo.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fatal: destination path 'convert2Yolo' already exists and is not an empty directory.</code></pre>
+</div>
+</div>
+<div id="e231bb3f-6c9e-4a5c-9dbb-54a6794fdf8a" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 필요 라이브러리 설치</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd convert2Yolo</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>qr requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[Errno 2] No such file or directory: 'convert2Yolo'
+/root/2024 winter/DL_tutorial/posts/yolov5
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<div id="d39f0a1a-bbed-4167-bbbe-bf2443a5efdc" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget <span class="st">'https://drive.google.com/uc?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--2024-02-08 00:13:13--  https://drive.google.com/uc?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79
+Resolving drive.google.com (drive.google.com)... 142.250.206.206, 2404:6800:400a:80b::200e
+Connecting to drive.google.com (drive.google.com)|142.250.206.206|:443... connected.
+HTTP request sent, awaiting response... 303 See Other
+Location: https://drive.usercontent.google.com/download?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79 [following]
+--2024-02-08 00:13:14--  https://drive.usercontent.google.com/download?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79
+Resolving drive.usercontent.google.com (drive.usercontent.google.com)... 142.250.76.129, 2404:6800:400a:80e::2001
+Connecting to drive.usercontent.google.com (drive.usercontent.google.com)|142.250.76.129|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 134 [application/octet-stream]
+Saving to: ‘uc?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79’
+
+uc?id=1WCodEuV9giZ9 100%[===================&gt;]     134  --.-KB/s    in 0s      
+
+2024-02-08 00:13:15 (13.2 MB/s) - ‘uc?id=1WCodEuV9giZ9SmjHzfCbJ8GuBaa0Gc79’ saved [134/134]
+</code></pre>
+</div>
+</div>
+<div id="e1691874-dd7a-4ff1-8d21-0a9bcba4b5a6" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trainval 데이터 yolo format 변환</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python3 <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>convert2Yolo<span class="op">/</span>example.py <span class="op">--</span>datasets VOC <span class="op">--</span>img_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>trainval<span class="op">/</span>VOCdevkit<span class="op">/</span>VOC2007<span class="op">/</span>JPEGImages<span class="op">/</span> <span class="op">--</span>label <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>trainval<span class="op">/</span>VOCdevkit<span class="op">/</span>VOC2007<span class="op">/</span>Annotations<span class="op">/</span> <span class="op">--</span>convert_output_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>VOC<span class="op">/</span>labels<span class="op">/</span>train2007 <span class="op">--</span>img_type <span class="st">".jpg"</span> <span class="op">--</span>manifest_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span> <span class="op">--</span>cls_list_file <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>convert2Yolo<span class="op">/</span>voc.names</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># test 데이터 yolo format 변환</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python3 <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>convert2Yolo<span class="op">/</span>example.py <span class="op">--</span>datasets VOC <span class="op">--</span>img_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>test<span class="op">/</span>VOCdevkit<span class="op">/</span>VOC2007<span class="op">/</span>JPEGImages<span class="op">/</span> <span class="op">--</span>label <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>test<span class="op">/</span>VOCdevkit<span class="op">/</span>VOC2007<span class="op">/</span>Annotations<span class="op">/</span> <span class="op">--</span>convert_output_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>pascal_datasets<span class="op">/</span>VOC<span class="op">/</span>labels<span class="op">/</span>test2007 <span class="op">--</span>img_type <span class="st">".jpg"</span> <span class="op">--</span>manifest_path <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span> <span class="op">--</span>cls_list_file <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>convert2Yolo<span class="op">/</span>voc.names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+VOC Parsing:   |████████████████████████████████████████| 100.0% (5011/5011)  Complete
+
+
+YOLO Generating:|████████████████████████████████████████| 100.0% (5011/5011)  Completeerating:|█████████-------------------------------| 22.7% (1136/5011)  Complete
+
+
+YOLO Saving:   |████████████████████████████████████████| 100.0% (5011/5011)  Complete
+
+
+VOC Parsing:   |████████████████████████████████████████| 100.0% (4952/4952)  Complete
+
+
+YOLO Generating:|████████████████████████████████████████| 100.0% (4952/4952)  Complete
+
+
+YOLO Saving:   |████████████████████████████████████████| 100.0% (4952/4952)  Complete
+</code></pre>
+</div>
+</div>
+<div id="13cb67c7-c0ad-4780-ad5c-98da939c1e2b" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pasal VOC 제공 파일로 train, val 라벨 분할</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets/trainval/VOCdevkit/VOC2007/ImageSets/Main/val.txt'</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(path) <span class="im">as</span> f:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    image_ids <span class="op">=</span> f.read().strip().split()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">id</span> <span class="kw">in</span> image_ids:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        ori_path <span class="op">=</span> <span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets/VOC/labels/train2007'</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        mv_path <span class="op">=</span> <span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets/VOC/labels/val2007'</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        shutil.move(<span class="ss">f"</span><span class="sc">{</span>ori_path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.txt"</span>, <span class="ss">f"</span><span class="sc">{</span>mv_path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="301b2693-00fe-4f74-9e99-7aaea7b246e5" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train / val / test 이미지 파일 복사</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, shutil</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">'/root/2024winter/DL_tutorial/posts/pascal_datasets'</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> folder, subset <span class="kw">in</span> (<span class="st">'trainval'</span>, <span class="st">'train2007'</span>), (<span class="st">'trainval'</span>, <span class="st">'val2007'</span>), (<span class="st">'test'</span>, <span class="st">'test2007'</span>):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    ex_imgs_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>folder<span class="sc">}</span><span class="ss">/VOCdevkit/VOC2007/JPEGImages'</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    label_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">/VOC/labels/</span><span class="sc">{</span>subset<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    img_path <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">/VOC/images/</span><span class="sc">{</span>subset<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(subset,<span class="st">": "</span>, <span class="bu">len</span>(os.listdir(label_path)))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> lbs_list <span class="kw">in</span> os.listdir(label_path):</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        shutil.move(os.path.join(ex_imgs_path,lbs_list.split(<span class="st">'.'</span>)[<span class="dv">0</span>]<span class="op">+</span><span class="st">'.jpg'</span>), os.path.join(img_path,lbs_list.split(<span class="st">'.'</span>)[<span class="dv">0</span>]<span class="op">+</span><span class="st">'.jpg'</span>))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>train2007 :  2501
+val2007 :  2510
+test2007 :  4952</code></pre>
+</div>
+</div>
+<section id="커스텀-데이터-준비" class="level2">
+<h2 class="anchored" data-anchor-id="커스텀-데이터-준비">커스텀 데이터 준비</h2>
+<div id="4eb5049a-f522-4f77-82ce-bb061002df59" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 라벨링한 커스텀 데이터셋 다운로드</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget <span class="st">'https://drive.google.com/uc?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>--2024-02-08 09:16:46--  https://drive.google.com/uc?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ
+Resolving drive.google.com (drive.google.com)... 172.217.161.206, 2404:6800:400a:80b::200e
+Connecting to drive.google.com (drive.google.com)|172.217.161.206|:443... connected.
+HTTP request sent, awaiting response... 303 See Other
+Location: https://drive.usercontent.google.com/download?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ [following]
+--2024-02-08 09:16:46--  https://drive.usercontent.google.com/download?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ
+Resolving drive.usercontent.google.com (drive.usercontent.google.com)... 142.251.222.33, 2404:6800:4004:818::2001
+Connecting to drive.usercontent.google.com (drive.usercontent.google.com)|142.251.222.33|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 443876 (433K) [application/octet-stream]
+Saving to: ‘uc?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ’
+
+uc?id=1avRwo9y3M1Op 100%[===================&gt;] 433.47K  1.34MB/s    in 0.3s    
+
+2024-02-08 09:16:48 (1.34 MB/s) - ‘uc?id=1avRwo9y3M1OpCh3tYTAD75Bolb-xlEJZ’ saved [443876/443876]
+</code></pre>
+</div>
+</div>
+<div id="93be8478-4d01-410a-b8c3-d34c9b22897f" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 파일 압축 해제</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(<span class="st">"04_detection_custom_datasets.zip"</span>, <span class="st">'r'</span>) <span class="im">as</span> zip_ref:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    zip_ref.extractall(<span class="st">"04_detection_custom_datasets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c340b139-612b-4869-aed8-246867bcaa76" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Yolo 6.2 release version 클론</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span>\ winter<span class="op">/</span>DL_tutorial<span class="op">/</span>posts</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> git clone <span class="op">-</span>b v6<span class="fl">.2</span> https:<span class="op">//</span>github.com<span class="op">/</span>ultralytics<span class="op">/</span>yolov5.git</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd yolov5</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 필수 라이브러리 다운로드</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numpy<span class="op">==</span><span class="fl">1.23.0</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>qr requirements.txt</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> utils</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>display <span class="op">=</span> utils.notebook_init()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>YOLOv5 🚀 v6.2-0-gd3ea0df8 Python-3.10.13 torch-1.12.1 CUDA:0 (NVIDIA A100-SXM4-80GB MIG 7g.80gb, 81251MiB)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Setup complete ✅ (128 CPUs, 503.7 GB RAM, 1001.9/1757.9 GB disk)</code></pre>
+</div>
+</div>
+<div id="5b0d4984-6050-4897-8aa6-0fda88d3fd04" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Weights &amp; Biases 셋팅</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q wandb</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> wandb</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>wandb.login()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>wandb: Currently logged in as: dlwjdwo1109. Use `wandb login --relogin` to force relogin</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="4beeb577-2422-4220-a776-e8b0189719a0" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 재현을 위한 랜덤 시드 고정</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>seed <span class="op">=</span> <span class="dv">2024</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>deterministic <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>random.seed(seed)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>np.random.seed(seed)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(seed)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>torch.cuda.manual_seed(seed)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> deterministic:</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    torch.backends.cudnn.deterministic <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    torch.backends.cudnn.benchmark <span class="op">=</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0ce1dfc2-24c8-4ec6-91b1-3d57d6fc2bc0" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd <span class="op">/</span>root<span class="op">/</span><span class="dv">2024</span><span class="er">winter</span><span class="op">/</span>DL_tutorial<span class="op">/</span>posts<span class="op">/</span>yolov5</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pasal VOC 데이터로 YOLO v5 훈련</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python train.py <span class="op">--</span>img <span class="dv">640</span> <span class="op">--</span>batch <span class="dv">32</span> <span class="op">--</span>epochs <span class="dv">30</span> <span class="op">--</span>data custom_voc.yaml <span class="op">--</span>weights <span class="st">''</span> <span class="op">--</span>cfg yolov5s.yaml <span class="op">--</span>seed <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/root/2024winter/DL_tutorial/posts/yolov5
+wandb: Currently logged in as: dlwjdwo1109. Use `wandb login --relogin` to force relogin
+train: weights=, cfg=yolov5s.yaml, data=custom_voc.yaml, hyp=data/hyps/hyp.scratch-low.yaml, epochs=30, batch_size=32, imgsz=640, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, noplots=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, optimizer=SGD, sync_bn=False, workers=8, project=runs/train, name=exp, exist_ok=False, quad=False, cos_lr=False, label_smoothing=0.0, patience=100, freeze=[0], save_period=-1, seed=2024, local_rank=-1, entity=None, upload_dataset=False, bbox_interval=-1, artifact_alias=latest
+github: skipping check (offline), for updates see https://github.com/ultralytics/yolov5
+requirements: Pillow==7.2.0 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install Pillow==7.2.0' skipped (offline)
+requirements: cycler==0.10.0 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install cycler==0.10.0' skipped (offline)
+requirements: kiwisolver==1.0.1 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install kiwisolver==1.0.1' skipped (offline)
+requirements: matplotlib==2.2.2 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install matplotlib==2.2.2' skipped (offline)
+requirements: numpy==1.14.3 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install numpy==1.14.3' skipped (offline)
+requirements: pyparsing==2.2.0 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install pyparsing==2.2.0' skipped (offline)
+requirements: python-dateutil==2.7.2 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install python-dateutil==2.7.2' skipped (offline)
+requirements: pytz==2018.4 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install pytz==2018.4' skipped (offline)
+requirements: six==1.11.0 not found and is required by YOLOv5, attempting auto-update...
+requirements: 'pip install six==1.11.0' skipped (offline)
+YOLOv5 🚀 v6.2-0-gd3ea0df8 Python-3.10.13 torch-1.12.1 CUDA:0 (NVIDIA A100-SXM4-80GB MIG 7g.80gb, 81251MiB)
+
+hyperparameters: lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+ClearML: run 'pip install clearml' to automatically track, visualize and remotely train YOLOv5 🚀 in ClearML
+TensorBoard: Start with 'tensorboard --logdir runs/train', view at http://localhost:6006/
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /root/2024winter/DL_tutorial/posts/yolov5/wandb/run-20240209_073845-bf46v602
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exalted-thunder-9
+wandb: ⭐️ View project at https://wandb.ai/dlwjdwo1109/YOLOv5
+wandb: 🚀 View run at https://wandb.ai/dlwjdwo1109/YOLOv5/runs/bf46v602
+
+Dataset not found ⚠️, missing paths ['/content/pascal_datasets/VOC/images/test2007']
+Traceback (most recent call last):
+  File "/root/2024winter/DL_tutorial/posts/yolov5/train.py", line 632, in &lt;module&gt;
+    main(opt)
+  File "/root/2024winter/DL_tutorial/posts/yolov5/train.py", line 528, in main
+    train(opt.hyp, opt, device, callbacks)
+  File "/root/2024winter/DL_tutorial/posts/yolov5/train.py", line 90, in train
+    loggers = Loggers(save_dir, weights, opt, hyp, LOGGER)  # loggers instance
+  File "/root/2024winter/DL_tutorial/posts/yolov5/utils/loggers/__init__.py", line 95, in __init__
+    self.wandb = WandbLogger(self.opt, run_id)
+  File "/root/2024winter/DL_tutorial/posts/yolov5/utils/loggers/wandb/wandb_utils.py", line 187, in __init__
+    self.data_dict = check_wandb_dataset(opt.data)
+  File "/root/2024winter/DL_tutorial/posts/yolov5/utils/loggers/wandb/wandb_utils.py", line 59, in check_wandb_dataset
+    return check_dataset(data_file)
+  File "/root/2024winter/DL_tutorial/posts/yolov5/utils/general.py", line 505, in check_dataset
+    raise Exception('Dataset not found ❌')
+Exception: Dataset not found ❌
+wandb: 🚀 View run exalted-thunder-9 at: https://wandb.ai/dlwjdwo1109/YOLOv5/runs/bf46v602
+wandb: ️⚡ View job at https://wandb.ai/dlwjdwo1109/YOLOv5/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjEzODM4NjQzMg==/version_details/v0
+wandb: Synced 6 W&amp;B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240209_073845-bf46v602/logs</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

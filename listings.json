@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/CV_ObjectDetection_0.html",
       "/posts/CV_classification_0.html",
       "/posts/LMTM.html",
       "/posts/VGGNet.html",
