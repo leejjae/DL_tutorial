@@ -2,7 +2,7 @@
 title: "DL_tutorial"
 listing:
   contents: posts
-  sort: "date"
+  sort: "date desc"
   type: table
   categories: true
   sort-ui: false
