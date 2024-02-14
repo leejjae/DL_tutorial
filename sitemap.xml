@@ -2,38 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://leejjae.github.io/DL_tutorial/about.html</loc>
-    <lastmod>2024-02-05T08:05:05.457Z</lastmod>
+    <lastmod>2024-02-14T04:17:59.351Z</lastmod>
   </url>
   <url>
     <loc>https://leejjae.github.io/DL_tutorial/posts/LMTM.html</loc>
-    <lastmod>2024-02-05T10:06:13.035Z</lastmod>
-  </url>
-  <url>
-    <loc>https://leejjae.github.io/DL_tutorial/posts/VGGNet.html</loc>
-    <lastmod>2024-02-05T10:06:08.087Z</lastmod>
-  </url>
-  <url>
-    <loc>https://leejjae.github.io/DL_tutorial/posts/CV_ObjectDetection_0.html</loc>
-    <lastmod>2024-02-09T07:46:19.338Z</lastmod>
-  </url>
-  <url>
-    <loc>https://leejjae.github.io/DL_tutorial/posts/ANN_2.html</loc>
-    <lastmod>2024-02-05T10:04:15.519Z</lastmod>
-  </url>
-  <url>
-    <loc>https://leejjae.github.io/DL_tutorial/posts/ANN_1.html</loc>
-    <lastmod>2024-02-05T10:04:04.763Z</lastmod>
-  </url>
-  <url>
-    <loc>https://leejjae.github.io/DL_tutorial/posts/AlexNet.html</loc>
-    <lastmod>2024-02-05T10:00:08.539Z</lastmod>
+    <lastmod>2024-02-14T04:17:59.675Z</lastmod>
   </url>
   <url>
     <loc>https://leejjae.github.io/DL_tutorial/posts/CV_classification_0.html</loc>
-    <lastmod>2024-02-05T08:13:25.670Z</lastmod>
+    <lastmod>2024-02-14T04:17:59.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/AlexNet.html</loc>
+    <lastmod>2024-02-14T04:17:59.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/CV_ObjectDetection_0.html</loc>
+    <lastmod>2024-02-14T04:17:59.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/ANN_2.html</loc>
+    <lastmod>2024-02-14T04:17:59.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/ANN_1.html</loc>
+    <lastmod>2024-02-14T04:17:59.671Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/CV_Instance_Segmentation.html</loc>
+    <lastmod>2024-02-13T05:16:21.263Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/VGGNet.html</loc>
+    <lastmod>2024-02-14T04:17:59.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://leejjae.github.io/DL_tutorial/posts/CV_Semantic_Segmentation.html</loc>
+    <lastmod>2024-02-13T05:17:09.207Z</lastmod>
   </url>
   <url>
     <loc>https://leejjae.github.io/DL_tutorial/index.html</loc>
-    <lastmod>2024-02-05T10:03:32.383Z</lastmod>
+    <lastmod>2024-02-14T04:17:59.663Z</lastmod>
   </url>
 </urlset>
